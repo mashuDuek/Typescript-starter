@@ -1,75 +1,60 @@
-"use strict";
 // Types - fundamental changes in TS 
 // Typescript enforces typing via erorr messaging but will NOT stop compilation 
 // due to error
+// const add = (a:number, b:number) =>{
+//     return a + b
+// }
+// console.log(add("1", 11))
 // string
-var str = "hello!";
-str = " this is a new string";
-str = Number(str);
+var str = "this is a string";
 // number
-var num = 100;
+var num = 10;
 // boolean
-var bool;
-bool = false;
+var bool = true;
 // ANY - new one!
-var whatever;
-whatever = 1;
-whatever = bool;
-// UNIONS!   
+var whatever = "this is antyitng";
+// UNIONS!  - looser typed variable  OR super strict
 var year;
-year = 1967;
-year = "1999";
+year = 1979;
+year = "1979";
 //  Arrays
 var arr = [];
 var arr2 = [];
-arr.push(function () { console.log("hi"), function () { return 'world'; }; });
-arr2.push(1, 10000, 23020320);
-console.log(arr);
-console.log(arr2);
 // TUPLES - ????
-var tup;
-// Aliases
-var alias;
+// strict typed array
+// look up never on empty array
+var tup = ["has to be string", 20, {}];
+tup.push();
+var tup2 = [];
+var thisThing = 10;
+thisThing = "this is now a thing";
 //   OBJECTS!
 var person = {
     name: "tim",
-    age: 48
+    age: 35
 };
-person.name = "Carlos";
-person.name = 10;
-person.email = "";
-var year2 = "1979";
-year2 = 1797;
-var thisBook = {
-    title: "how to typescirpt",
-    publisher: "microsoft",
-    publishYear: 2021
-};
-//  private and public methods
+person.job = "IA nights and weekends";
+console.log(person);
+var thisBook = {};
+//  private and public methods - and passing classes
 var book = /** @class */ (function () {
     function book(title, publisher, publishYear, salesFigures) {
         this.title = title,
             this.publisher = publisher,
-            this.publishYear = publishYear,
-            this.salesFigures = salesFigures;
+            this.publishYear = publishYear;
     }
-    book.prototype.getSales = function () {
-        console.log(this.salesFigures);
-    };
     return book;
 }());
-var bookOne = new book("lord of the flies", "western press", 1955, 100000, "stuff");
+var bookOne = new book("lord of the flies", "western press", 1955, 100000);
 // display hidden value from private
 console.log(bookOne);
 // Functions and declaring
 // Js classic
-// const add = (a,b, c ) => { return a+b }
+// const add = ( a, b ) => { return a+b }
 // TS implementation
-var add = function (a, b) {
-    return a + b;
-};
-add(2, 2);
-add("2", 2);
+// const  add = (a:number, b:number):number =>{
+//     return a+b 
+// }
 // optional arguments
 var add3 = function (a, b, c) {
     return a + b + c;
@@ -91,7 +76,6 @@ dontDoAnything();
 //  works because of HTMLInput element
 var input = document.querySelector('input');
 //  display ? due to null possibility
-input === null || input === void 0 ? void 0 : input.value;
 // typecast to different type
 // let input = document.querySelector('#name') as HTMLInputElement
 // defaults to type Element which is not an InputElement 
